@@ -1,0 +1,20 @@
+{
+  "uuid": "d45eaf3e-a0bb-4a16-a6e7-1c1ffac5ea33",
+  "name": "SCOUT create field getter",
+  "description": "create convenience method: getXxxxxField()",
+  "extraSearchTerms": [
+    "fbc"
+  ],
+  "tags": [
+    "scout"
+  ],
+  "code": "public ${Field} get${Field}() {\r\n  return getFieldByClass(${Field}.class);\r\n}",
+  "location": "JAVA_TYPE_MEMBERS",
+  "dependencies": [
+    {
+      "groupId": "org.eclipse.scout",
+      "artifactId": "org.eclipse.scout.rt.client",
+      "version": "0.0.0"
+    }
+  ]
+}

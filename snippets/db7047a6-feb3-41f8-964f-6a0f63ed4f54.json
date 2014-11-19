@@ -1,0 +1,20 @@
+{
+  "uuid": "db7047a6-feb3-41f8-964f-6a0f63ed4f54",
+  "name": "SCOUT create column getter",
+  "description": "create convenience method: getXxxxxColumn()",
+  "extraSearchTerms": [
+    "cbc"
+  ],
+  "tags": [
+    "scout"
+  ],
+  "code": "public ${column}Column get${column}Column() {\r\n  return getColumnSet().getColumnByClass(${column}Column.class);\r\n}",
+  "location": "JAVA_TYPE_MEMBERS",
+  "dependencies": [
+    {
+      "groupId": "org.eclipse.scout",
+      "artifactId": "org.eclipse.scout.rt.client",
+      "version": "0.0.0"
+    }
+  ]
+}
