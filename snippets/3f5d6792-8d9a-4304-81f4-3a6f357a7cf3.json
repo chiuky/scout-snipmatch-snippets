@@ -1,0 +1,22 @@
+{
+  "uuid": "3f5d6792-8d9a-4304-81f4-3a6f357a7cf3",
+  "name": "Converter ",
+  "description": "Generic converter ",
+  "extraSearchTerms": [],
+  "tags": [],
+  "code": "${:import(com.ab.ah.scad.acl.converter.DomainEntityConverter, java.util.ArrayList, java.util.List, org.springframework.beans.factory.annotation.Autowired)}${cursor}\n\n\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport org.springframework.beans.factory.annotation.Autowired;\n\nimport com.ab.ah.scad.acl.converter.DomainEntityConverter;\nimport ${sourceClassName};\nimport ${targetClassName};\n\npublic class ${sourceClassName}To${targetClassName}Converter {\n\t@Autowired\n\tprivate DomainEntityConverter domainEntityConverter;\n\n\tpublic ${targetClassName} convert(${sourceClassName} source) {\n\t\t${targetClassName} target \u003d null;\n\t\tif (source !\u003d null) {\n\t\t\ttarget \u003d domainEntityConverter.convert(source, ${targetClassName}.class);\n\t\t}\n\t\treturn target;\n\t}\n\n\tpublic List\u003c${targetClassName}\u003e convert(List\u003c${sourceClassName}\u003e sources) {\n\t\tList\u003c${targetClassName}\u003e targets \u003d null;\n\t\tif (sources !\u003d null) {\n\t\t\ttargets \u003d new ArrayList\u003c${targetClassName}\u003e();\n\t\t\tfor (${sourceClassName} source : sources) {\n\t\t\t\t${targetClassName} target \u003d convert(source);\n\t\t\t\tif (target !\u003d null) {\n\t\t\t\t\ttargets.add(target);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn targets;\n\t}\n\n\tpublic ${targetClassName} convertDeep(${sourceClassName} source) {\n\t\t${targetClassName} target \u003d convert(source);\n\t\t// TODO manage deep conversion\n\t\treturn target;\n\t}\n\n\tpublic List\u003c${targetClassName}\u003e convertDeep(List\u003c${sourceClassName}\u003e sources) {\n\t\tList\u003c${targetClassName}\u003e targets \u003d null;\n\t\tif (sources !\u003d null) {\n\t\t\ttargets \u003d new ArrayList\u003c${targetClassName}\u003e();\n\t\t\tfor (${sourceClassName} source : sources) {\n\t\t\t\t${targetClassName} target \u003d convertDeep(source);\n\t\t\t\tif (target !\u003d null) {\n\t\t\t\t\ttargets.add(target);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn targets;\n\t}\n}\n\n",
+  "location": "GENERIC_FILE",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "com.ab.ah.scad.acl",
+      "artifactId": "acl-api",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "uuid": "69c76505-1de8-4bb1-a61c-0859767fd416",
+  "name": "readMainEntityToAssociate ",
+  "description": "read a main entity by code or id",
+  "extraSearchTerms": [],
+  "tags": [],
+  "code": " /**\n * Read patient.\n *\n * @param \n *            the patient business key\n * @return the patient\n */\nprivate Patient readPatient(PatientBusinessKeyTO ${patientBusinessKey:newName(com.oneleo.patientdatamanagement.to.PatientBusinessKeyTO)}) {\n\n    if (${patientBusinessKey}.getId() !\u003d null) {\n        return ${patientDAO:field(com.oneleo.patientdatamanagement.patient.persistence.dao.PatientDAO)}.readDomainEntityById(${patientBusinessKey}.getId());\n    } else {\n        SearchCriteria ${searchCriteria:newName(com.ab.ah.scad.acl.dao.SearchCriteria)} \u003d new SearchCriteria();\n        ${searchCriteria}.add(PatientFields.CODE, ${patientBusinessKey}.getCode());\n\n        return ${patientDAO}.findDomainEntityBySearchCriteria(${searchCriteria});\n    }\n}\n${:import(com.ab.ah.scad.acl.dao.SearchCriteria, com.oneleo.patientdatamanagement.patient.persistence.model.jpa.Patient, com.oneleo.patientdatamanagement.patient.persistence.model.jpa.defaultentity.fields.PatientFields, com.oneleo.patientdatamanagement.to.PatientBusinessKeyTO)}${cursor}\n",
+  "location": "JAVA",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "com.ab.ah.scad.acl",
+      "artifactId": "acl-api",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    }
+  ]
+}

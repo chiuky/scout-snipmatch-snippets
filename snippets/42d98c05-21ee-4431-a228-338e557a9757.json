@@ -1,0 +1,17 @@
+{
+  "uuid": "42d98c05-21ee-4431-a228-338e557a9757",
+  "name": "PropertyPlaceHolder",
+  "description": "Insert a spring property placeholder in xml config file",
+  "extraSearchTerms": [
+    "property",
+    "place",
+    "placeholder"
+  ],
+  "tags": [],
+  "code": "\u003c!-- place holder config beans : mandatory to load acl context --\u003e\n \u003cbean id\u003d\"placeholderConfig\" class\u003d\"org.springframework.beans.factory.config.PropertyPlaceholderConfigurer\"\u003e\n  \u003cproperty name\u003d\"locations\"\u003e\n   \u003clist\u003e\n    \u003cvalue\u003e${link(classpath:META-INF,classpath:META-INF*)}/${fileName}\u003c/value\u003e\n   \u003c/list\u003e\n  \u003c/property\u003e\n \u003c/bean\u003e",
+  "location": "FILE",
+  "filenameRestrictions": [
+    ".xml"
+  ],
+  "dependencies": []
+}

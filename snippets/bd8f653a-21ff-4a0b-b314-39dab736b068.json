@@ -1,0 +1,13 @@
+{
+  "uuid": "bd8f653a-21ff-4a0b-b314-39dab736b068",
+  "name": "Logger ",
+  "description": "create a slf4j Logger",
+  "extraSearchTerms": [],
+  "tags": [
+    "logging"
+  ],
+  "code": "/** The Constant LOGGER for class ${enclosing_type} */\nprivate static final ${loggerType:newType(org.slf4j.Logger)} ${logger:link(LOG,LOGGER)} \u003d LoggerFactory.getLogger(${enclosing_type}.class);\n${imp:import(org.slf4j.LoggerFactory)}",
+  "location": "JAVA_TYPE_MEMBERS",
+  "filenameRestrictions": [],
+  "dependencies": []
+}
