@@ -1,0 +1,13 @@
+{
+  "uuid": "52c8515e-6e4b-4cc6-a7e6-e6acd3628c25",
+  "name": "CreateUTCDate",
+  "description": "Crea una data in UTC format inserendo YYYY-MM-DD",
+  "extraSearchTerms": [
+    "UTC"
+  ],
+  "tags": [],
+  "code": "    \r\n\r\n\r\nSimpleDateFormat isoFormat \u003d new SimpleDateFormat(\"yyyy-MM-dd\u0027T\u0027HH:mm:ss\");\r\n        isoFormat.setTimeZone(TimeZone.getTimeZone(\"UTC\"));\r\n        Date date;\r\n        try {\r\n            date \u003d isoFormat.parse(\"${date}T00:00:00\");\r\n            patientFilter.setDateOfBirth(date);\r\n        } catch (ParseException e) {\r\n            fail(\"Date format problem\");\r\n        }",
+  "location": "JAVA",
+  "filenameRestrictions": [],
+  "dependencies": []
+}
