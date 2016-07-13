@@ -1,0 +1,36 @@
+{
+  "uuid": "9e954da2-73d0-483f-928b-eea5f6f3c915",
+  "name": "createChildEntity",
+  "description": "create a child entity of another entity ",
+  "extraSearchTerms": [],
+  "tags": [
+    "entity",
+    "create",
+    "child"
+  ],
+  "code": "\n@Autowired\nprivate ${Main}DAO ${main}Dao;\n\n\n@Autowired\nprivate ${Child}DAO ${child}Dao;\n\n\n@Autowired\nprivate ${Child}TOTo${Child}Converter ${child}TOTo${Child}Converter;\n\n\n@Autowired\nprivate ${Child}To${Child}TOConverter ${child}To${Child}TOConverter ;\n\n/** The Constant LOGGER. */\nprivate static final Logger ${LOGGER:newName(org.slf4j.Logger)} \u003d LoggerFactory.getLogger(${enclosing_type}.class);\n\n\n@Override\npublic ${Child}TO create${Child}(${Child}TO ${child}ToCreate) throws ExecuteException {\n\n    if (${LOGGER}.isDebugEnabled()) {\n        ${LOGGER}.debug(\"Persist on DB ${Child} : {}\", ${child}ToCreate);\n    }\n    validateInput(${child}ToCreate);\n\n    ${Main}BusinessKeyTO ${main}BusinessKeyTO \u003d ${child}ToCreate.get${Main}BusinessKey();\n\n    // read patient\n    ${Main} ${main}Db \u003d read${Main}(${main}BusinessKeyTO);\n\n    // convert ${child}ToCreate in entity\n    ${Child} ${child} \u003d ${child}TOTo${Child}Converter.convert(${child}ToCreate);\n    \n    // set ${main} in childEntity\n    ${child}.set${Main}(${main}Db);\n    \n    // Persist ${Child} on DB\n    ${Child} ${child}DB \u003d ${child}Dao.createDomainEntity(${child});\n    if (${LOGGER}.isDebugEnabled()) {\n        ${LOGGER}.debug(\"Persisted on DB ${Child} : {}\", ${child}DB);\n    }\n\n    return ${child}To${Child}TOConverter.convert(${child}DB);\n\t\n\t}\n\n\nprivate ${Main} read${Main}(${Main}BusinessKeyTO ${main}BusinessKey) throws EntityNotFoundException {\n    ${Main} ${main};\n    if (${main}BusinessKey.getId() !\u003d null) {\n        ${main} \u003d ${main}Dao.readDomainEntityById(${main}BusinessKey.getId());\n        if (${main} \u003d\u003d null)\n            throw new EntityNotFoundException(new Object[] { \"${Main}\", \"ID\" });\n    } else {\n        SearchCriteria searchCriteria \u003d new SearchCriteria();\n        searchCriteria.add(${Main}Fields.CODE, ${main}BusinessKey.getCode());\n\n        ${main} \u003d ${main}Dao.findDomainEntityBySearchCriteria(searchCriteria);\n        if (${main} \u003d\u003d null)\n            throw new EntityNotFoundException(new Object[] { \"${Main}\", searchCriteria });\n    }\n    return ${main};\n}\n\n\nprivate static void validateInput(${Child}TO child) throws ApplicationFailureError {\n\n    if (child \u003d\u003d null) {\n        throw new ApplicationFailureError(ApplicationFailureErrorCodes.ERROR_NULL_OBJECT.getCode(), Arrays.asList(\"${Child}TO\"));\n    }\n    ${Main}DatamanagementUtil.validate${Main}BusinessKey(child.get${Main}BusinessKey(), \"create${Child}\");\n}\n\n${:import(com.ab.ah.scad.acl.dao.SearchCriteria, com.ab.ah.scad.acl.error.ApplicationFailureError, com.ab.ah.scad.acl.error.EntityNotFoundException, com.ab.ah.scad.acl.error.ExecuteException, com.ab.oneleo.common.commonsutil.error.ApplicationFailureErrorCodes,  java.util.Arrays, org.slf4j.Logger, org.slf4j.LoggerFactory, org.springframework.beans.factory.annotation.Autowired)}${cursor}\n",
+  "location": "FILE",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "com.ab.ah.scad.acl",
+      "artifactId": "acl-api",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "org.slf4j",
+      "artifactId": "slf4j-api",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "com.ab.oneleo.commons.eas",
+      "artifactId": "commons-util",
+      "version": "0.0.0"
+    }
+  ]
+}
