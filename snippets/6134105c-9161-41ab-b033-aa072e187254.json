@@ -1,0 +1,19 @@
+{
+  "uuid": "6134105c-9161-41ab-b033-aa072e187254",
+  "name": "sonarPropertyExclusions",
+  "description": "declare a property to exclude sonar file analysis on sonar server",
+  "extraSearchTerms": [
+    "sonar"
+  ],
+  "tags": [
+    "sonar",
+    "quality",
+    "exclusion"
+  ],
+  "code": "\u003c!-- Quality exclusion configuration --\u003e\n\u003cclover-maven-plugin.project.version\u003e4.1.1\u003c/clover-maven-plugin.project.version\u003e\n\u003csonar-maven-plugin.version\u003e3.0.2\u003c/sonar-maven-plugin.version\u003e\n\u003csonar.exclusions\u003e\n            **/util/constants/**/*.java,\n            **/util/**/*Constants.java,\n            **/*GCPConstants.java,\n            **/error/*.java,\n            **/error/**/*.java,\n            **/to/*.java,\n            **/to/**/*.java,\n            **/eto/*.java,\n            **/eto/**/*.java,\n            **/persistence/model/**/*.java,\n            **/persistence/dao/jpa/*.java,\n            **/test/util/*.java,\n            com/ab/tsf/**/*.java,\n            **/businessrule/*BR.java,\n            **/action/*Action.java,\n            **/service/api/*.java,\n            **/com/*Test.java,\n            **/com/*Tests.java\n        \u003c/sonar.exclusions\u003e",
+  "location": "GENERIC_FILE",
+  "filenameRestrictions": [
+    "pom.xml"
+  ],
+  "dependencies": []
+}

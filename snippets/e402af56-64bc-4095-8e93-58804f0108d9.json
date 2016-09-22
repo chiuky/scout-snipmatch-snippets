@@ -1,0 +1,21 @@
+{
+  "uuid": "e402af56-64bc-4095-8e93-58804f0108d9",
+  "name": "sonarCloverPlugin",
+  "description": "add clover maven plugin to genarare quality report to publish on sonar server",
+  "extraSearchTerms": [
+    "sonar",
+    "plugin",
+    "clover"
+  ],
+  "tags": [
+    "sonar",
+    "plugin",
+    "clover"
+  ],
+  "code": "\u003c!-- ADD IN \n \u003cplugins\u003e\n     \u003cplugin\u003e\nSECTION --\u003e\n\u003c!-- TO GENERATE COVERAGE REPORT --\u003e\n\u003cplugin\u003e\n              \u003cgroupId\u003ecom.atlassian.maven.plugins\u003c/groupId\u003e\n              \u003cartifactId\u003emaven-clover2-plugin\u003c/artifactId\u003e\n              \u003cconfiguration\u003e\n               \u003cincludes\u003e\n                \u003cinclude\u003e**/*.java\u003c/include\u003e\n               \u003c/includes\u003e\n               \u003cexcludes\u003e\n                \u003cexclude\u003ecom/**/*Test.java\u003c/exclude\u003e\n                \u003cexclude\u003ecom/**/*Tests.java\u003c/exclude\u003e\n                \u003cexclude\u003ecom/ab/tsf/**\u003c/exclude\u003e\n                \u003cexclude\u003e**/util/constants/**/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/util/**/*Constants.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/*GCPConstants.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/error/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/error/**/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/to/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/to/**/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/eto/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/eto/**/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/persistence/model/**/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/persistence/dao/jpa/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/test/util/**/*.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/businessrule/*BR.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/action/*Action.java\u003c/exclude\u003e\n                \u003cexclude\u003e**/service/api/*.java\u003c/exclude\u003e\n               \u003c/excludes\u003e\n              \u003c/configuration\u003e\n             \u003c/plugin\u003e",
+  "location": "GENERIC_FILE",
+  "filenameRestrictions": [
+    "pom.xml"
+  ],
+  "dependencies": []
+}

@@ -1,0 +1,13 @@
+{
+  "uuid": "bd9f05f0-cc1e-4082-adb7-2f24d1106a6b",
+  "name": "ValidatorUtil",
+  "description": "add validation call",
+  "extraSearchTerms": [
+    "validation"
+  ],
+  "tags": [],
+  "code": "@Autowired\nprivate com.ab.oneleo.common.commonsutil.impl.ValidatorUtil validatorUtil;\n\n\n\nvalidatorUtil.syntacticValidation(${cursor});\n\n",
+  "location": "FILE",
+  "filenameRestrictions": [],
+  "dependencies": []
+}
