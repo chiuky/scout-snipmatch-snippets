@@ -1,13 +1,33 @@
 {
   "uuid": "bd9f05f0-cc1e-4082-adb7-2f24d1106a6b",
   "name": "ValidatorUtil",
-  "description": "add validation call",
+  "description": "add syntactic validation invocation on transfer object",
   "extraSearchTerms": [
-    "validation"
+    "validation",
+    "validator"
   ],
-  "tags": [],
-  "code": "@Autowired\nprivate com.ab.oneleo.common.commonsutil.impl.ValidatorUtil validatorUtil;\n\n\n\nvalidatorUtil.syntacticValidation(${cursor});\n\n",
-  "location": "FILE",
+  "tags": [
+    "validation",
+    "validator"
+  ],
+  "code": "${:import(com.ab.oneleo.common.commonsutil.impl.ValidatorUtil,org.springframework.beans.factory.annotation.Autowired)}\n\n@Autowired\nprivate ValidatorUtil ${validator:field(ValidatorUtil)};\n\n${validator}.syntacticValidation(${enclosing_method_arguments}${cursor});\n\n",
+  "location": "JAVA",
   "filenameRestrictions": [],
-  "dependencies": []
+  "dependencies": [
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "com.ab.ah.scad.acl",
+      "artifactId": "acl-api",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "com.ab.oneleo.commons.eas",
+      "artifactId": "commons-util",
+      "version": "0.0.0"
+    }
+  ]
 }
