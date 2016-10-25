@@ -1,0 +1,30 @@
+{
+  "uuid": "1f24503b-abab-48fd-9c2a-c520dbd9891f",
+  "name": "TOtoETOConverter",
+  "description": "template for generic TO to ETO converter",
+  "extraSearchTerms": [
+    "converter",
+    "TO",
+    "ETO"
+  ],
+  "tags": [
+    "TO",
+    "ETO",
+    "converter"
+  ],
+  "code": "package service.internal.converters;\n\nimport ${TO};\nimport ${ETO};\n\n/**\n * \n * @author ${user} ${date}\n *\n */\npublic class ${TO}To${ETO}Converter extends DynamicAccessConverter\u003c${TO}, ${ETO}\u003e {\n\n\n    @Override\n    public ${ETO} convertDeep(${TO} ${source}) {\n       //non deep conversion required\n       return super.convert(${source});\n\t\n       /*@formatter:OFF remove this section if not required \n\t${ETO} ${result} \u003d super.convert(${source});\n       if (${result} !\u003d null) {\n\t//TODO manage deep object conversion \n\t//Example : \n\t \tresult.setPatientBusinessKey(patientBusinessKeyTOToPatientBusinessKeyETOConverter.convert(source.getPatientBusinessKey()));\t\n          \t\n        }\n        return ${result};\n\t@formatter:ON */\n    }\n}\n${:import(com.ab.oneleo.common.commonsutil.converter.api.DynamicAccessConverter,org.springframework.beans.factory.annotation.Autowired)}${cursor}\n",
+  "location": "FILE",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "com.ab.oneleo.commons.eas",
+      "artifactId": "commons-util",
+      "version": "0.0.0"
+    }
+  ]
+}
