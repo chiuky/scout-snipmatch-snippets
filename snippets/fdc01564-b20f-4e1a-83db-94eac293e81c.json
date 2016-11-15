@@ -1,0 +1,30 @@
+{
+  "uuid": "fdc01564-b20f-4e1a-83db-94eac293e81c",
+  "name": "TOtoEntityConverter",
+  "description": "template for generic TO to Entity converter",
+  "extraSearchTerms": [
+    "converter",
+    "TO",
+    "ETO"
+  ],
+  "tags": [
+    "TO",
+    "converter",
+    "Entity"
+  ],
+  "code": "package com.oneleo.${FM}.${EM}.entity.service.internal.converter ;\n\nimport com.ab.oneleo.common.commonsutil.converter.api.GenericTOConverter;\nimport com.oneleo.${FM}.${EM}.persistence.model.jpa.${ENTITY};\nimport com.oneleo.${FM}.to.${ENTITY}TO;\n\n\n${cursor}\n//TODO remove\n//${FM} : functional module name in lower case, es: patientdatamanagement\n//${EM} : entity module name in lower case, es: patient\n//${ENTITY} : Entity class to convert, es: Patient\n\n/**\n * \n * @author ${user} ${date} \n *\n */\npublic class ${ENTITY}TOTo${ENTITY}Converter extends GenericTOConverter\u003c${ENTITY}TO, ${ENTITY}\u003e {\n\n\n //TODO internal converter to manage deep conversion if required\n //@Autowired\n //private internalConverter \n \n    @Override\n    public ${ENTITY} convertDeep(${ENTITY}TO source) {\n       // TODO remove if deep conversion is required\n       //return super.convert(source);\n\t\n        // TODO remove if no deep conversion is required\n        ${ENTITY} result \u003d super.convert(source);\n        if (result !\u003d null) {\n\t        //TODO manage deep object conversion \n        \t//Example : result.setPatientBusinessKey(patientBusinessKeyTOToPatientBusinessKeyETOConverter.convertDeep(source.getPatientBusinessKey()));\t\n        \n        }\n        return result;\n    }\n}\n\n",
+  "location": "FILE",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "com.ab.oneleo.commons.eas",
+      "artifactId": "commons-util",
+      "version": "0.0.0"
+    }
+  ]
+}

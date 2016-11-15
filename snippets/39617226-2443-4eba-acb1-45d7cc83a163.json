@@ -1,0 +1,30 @@
+{
+  "uuid": "39617226-2443-4eba-acb1-45d7cc83a163",
+  "name": "TOtoEntityConverterTest",
+  "description": "template for generic TO to Entity converter",
+  "extraSearchTerms": [
+    "converter",
+    "TO",
+    "Entity"
+  ],
+  "tags": [
+    "TO",
+    "converter",
+    "Entity"
+  ],
+  "code": "//TODO remove\n//${fm} : functional module name in lower case, es: patientdatamanagement\n//${em} : entity module name in lower case, es: patient\n//${Em} : entity module name in CamelCase case, es: Patient\n//${Entity} : Entity class to convert, es: Patient\n//${entity} : variable entity class to convert in lower case, es: patient\n\npackage com.oneleo.${fm}.${em}.entity.service.internal.converter;\r\n\r\nimport static org.junit.Assert.assertEquals;\r\nimport static org.junit.Assert.assertNotNull;\r\nimport static org.junit.Assert.assertNull;\r\nimport static org.junit.Assert.assertTrue;\r\n\r\nimport java.util.Arrays;\r\nimport java.util.Set;\r\n\r\nimport org.junit.Test;\r\nimport org.junit.runner.RunWith;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.test.context.junit4.SpringJUnit4ClassRunner;\r\n\r\nimport com.ab.oneleo.junit.DynamicAccessUtil;\r\nimport com.oneleo.${fm}.${em}.persistence.model.jpa.${Entity};\r\nimport com.oneleo.${fm}.to.${Entity}TO;\r\nimport com.oneleo.${fm}.to.field.${Entity}TOField;\r\n\r\n@RunWith(SpringJUnit4ClassRunner.class)\r\npublic class ${Entity}TOTo${Entity}ConverterTests extends ${Em}BaseConvertersTests {\r\n\r\n    @Autowired\r\n    private ${Entity}TOTo${Entity}Converter ${entity}TOTo${Entity}Converter;\r\n\r\n    @Test\r\n    public void convertNull() {\r\n        ${Entity}TO ${Entity}TO \u003d null;\r\n        assertNull(${entity}TOTo${Entity}Converter.convert(${Entity}TO));\r\n    }\r\n\r\n    @Test\r\n    public void convert() {\r\n\r\n        ${Entity}TO ${entity}TO \u003d new ${Entity}TO();\r\n        DynamicAccessUtil.setAttributes(${entity}TO);\r\n\r\n        ${Entity} ${entity} \u003d ${entity}TOTo${Entity}Converter.convert(${entity}TO);\r\n\r\n        assertNotNull(${entity});\r\n\r\n        Set\u003cString\u003e notEquals \u003d DynamicAccessUtil.isEquals(${entity}TO, ${entity}, Arrays.asList(${entity}TO.getAttributeNames()));\r\n\r\n        assertNotNull(notEquals);\r\n\n        //TODO add all attribute not converted using snippet :\r\n        assertTrue(\"the field \" + ${Entity}TOField.DESCRIPTION + \" is now converted from ${Entity}TO to ${Entity}\", notEquals.contains(${Entity}TOField.ID));\r\n  \r\n        int notEqualsfields \u003d 0;//TODO set number of fields not converted\r\n        assertEquals(\"Ther\u0027are fields not converted from ${Entity}TO to ${Entity}\", notEqualsfields, notEquals.size());\r\n\r\n    }\r\n\n    //for branch coverage\n    @Test\r\n    public void convertDeepNull() {\n        \r\n        ${Entity}TO ${entity}TO \u003d null;\r\n        assertNull(${entity}TOTo${Entity}Converter.convertDeep(${entity}TO));\r\n    }\r\n\r\n    @Test\r\n    public void convertDeep() {\r\n\r\n        ${Entity}TO ${entity}TO \u003d new ${Entity}TO();\r\n        DynamicAccessUtil.setAttributes(${entity}TO);\r\n        \n        //TODO set TO Attribute\r\n\n        ${Entity} ${entity} \u003d ${entity}TOTo${Entity}Converter.convertDeep(${entity}TO);\r\n\r\n        assertNotNull(${entity});\r\n\r\n        Set\u003cString\u003e notEquals \u003d DynamicAccessUtil.isEquals(${entity}TO, ${entity}, Arrays.asList(${entity}TO.getAttributeNames()));\r\n\r\n        assertNotNull(notEquals);\r\n\n        //TODO add all attribute not converted using snippet :\r\n        assertTrue(\"the field \" + ${Entity}TOField.DESCRIPTION + \" is now converted from ${Entity}TO to ${Entity}\", notEquals.contains(${Entity}TOField.DESCRIPTION));\r\n       \r\n\r\n        int notEqualsfields \u003d 0;//TODO set number of fields not converted\r\n        assertEquals(\"Ther\u0027are fields not converted from ${entity}TO to ${entity}\", notEqualsfields, notEquals.size());\r\n\r\n    }\r\n}\r\n",
+  "location": "FILE",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "com.ab.oneleo.commons.eas",
+      "artifactId": "commons-util",
+      "version": "0.0.0"
+    }
+  ]
+}

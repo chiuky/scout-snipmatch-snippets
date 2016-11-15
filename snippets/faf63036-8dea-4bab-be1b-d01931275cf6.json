@@ -1,0 +1,17 @@
+{
+  "uuid": "faf63036-8dea-4bab-be1b-d01931275cf6",
+  "name": "assertFieldConvertedFromTOToEntity",
+  "description": "assert to verifiy if TO field is converted by converter",
+  "extraSearchTerms": [],
+  "tags": [],
+  "code": "assertTrue(\"the field \" + ${Entity}TOField.${FIELDNAME} + \" is now converted from ${Entity}TO to ${Entity}\", ${notEquals:var(java.util.Set)}.contains(${Entity}TOField.${FIELDNAME}));\n\n${:importStatic(org.junit.Assert.assertTrue)}${cursor}\n",
+  "location": "JAVA",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "uuid": "0d3bcb41-22ef-4d41-bde6-279d2ed3ddef",
+  "name": "throw new EntityNotFoundException",
+  "description": "",
+  "extraSearchTerms": [
+    "EntityNotFoundException"
+  ],
+  "tags": [],
+  "code": "//  Entity ${EntityName} not found for criteria  : ${Criteria} \nthrow new EntityNotFoundException(new Object[] {${EntityName},${Criteria}});\n${:import(com.ab.ah.scad.acl.error.EntityNotFoundException)}${cursor}\n",
+  "location": "FILE",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "com.ab.ah.scad.acl",
+      "artifactId": "acl-api",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    }
+  ]
+}
