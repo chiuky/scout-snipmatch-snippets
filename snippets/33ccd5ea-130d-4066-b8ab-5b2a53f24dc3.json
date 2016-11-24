@@ -1,0 +1,30 @@
+{
+  "uuid": "33ccd5ea-130d-4066-b8ab-5b2a53f24dc3",
+  "name": "EntityToTOConverterTest",
+  "description": "template for generic  Entity to TO converter",
+  "extraSearchTerms": [
+    "converter",
+    "TO",
+    "Entity"
+  ],
+  "tags": [
+    "TO",
+    "converter",
+    "Entity"
+  ],
+  "code": "//TODO remove\n//${fm} : functional module name in lower case, es: patientdatamanagement\n//${em} : entity module name in lower case, es: patient\n//${Em} : entity module name in CamelCase case, es: Patient\n//${Entity} : Entity class to convert, es: Patient\n//${entity} : variable entity class to convert in lower case, es: patient\n\npackage com.oneleo.${fm}.${em}.entity.service.internal.converter;\r\n\r\nimport static org.junit.Assert.assertEquals;\r\nimport static org.junit.Assert.assertNotNull;\r\nimport static org.junit.Assert.assertNull;\r\nimport static org.junit.Assert.assertTrue;\r\n\r\nimport java.util.Arrays;\r\nimport java.util.Set;\r\n\r\nimport org.junit.Test;\r\nimport org.junit.runner.RunWith;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.test.context.junit4.SpringJUnit4ClassRunner;\r\n\r\nimport com.ab.oneleo.junit.DynamicAccessUtil;\r\nimport com.oneleo.${fm}.${em}.persistence.model.jpa.${Entity};\r\nimport com.oneleo.${fm}.to.${Entity}TO;\r\nimport com.oneleo.${fm}.${em}.persistence.model.jpa.defaultentity.fields.${Entity}Fields;\n\n\r\n@RunWith(SpringJUnit4ClassRunner.class)\r\npublic class ${Entity}To${Entity}TOConverterTests extends ${Em}BaseConvertersTests {\r\n\r\n    @Autowired\r\n    private ${Entity}To${Entity}TOConverter ${entity}To${Entity}TOConverter;\r\n\r\n    @Test\r\n    public void convertNull() {\r\n        ${Entity} ${entity} \u003d null;\r\n        assertNull(${entity}To${Entity}TOConverter.convert(${entity}));\r\n    }\r\n\r\n    @Test\r\n    public void convert() {\r\n\r\n        ${Entity} ${entity} \u003d new com.oneleo.${fm}.${em}.persistence.model.jpa.defaultentity.${Entity}();\r\n        DynamicAccessUtil.setAttributes(${entity});\r\n\r\n        ${Entity}TO ${entity}TO \u003d ${entity}To${Entity}TOConverter.convert(${entity});\r\n\r\n        assertNotNull(${entity}TO);\r\n\r\n        Set\u003cString\u003e notEquals \u003d DynamicAccessUtil.isEquals(${entity}, ${entity}TO, Arrays.asList(${entity}.getAttributeNames()));\r\n\r\n        assertNotNull(notEquals);\r\n\n        //TODO add all attribute not converted using snippet \r\n  \r\n        int notEqualsfields \u003d 0;//TODO set number of fields not converted\r\n        assertEquals(\"Ther\u0027are fields not converted from ${Entity} to ${Entity}TO\", notEqualsfields, notEquals.size());\r\n\r\n    }\r\n\n    //for branch coverage\n    @Test\r\n    public void convertDeepNull() {\n        \r\n        ${Entity} ${entity} \u003d null;\r\n        assertNull(${entity}To${Entity}TOConverter.convertDeep(${entity}));\r\n    }\r\n\r\n    @Test\r\n    public void convertDeep() {\r\n\r\n        ${Entity} ${entity} \u003d new com.oneleo.${fm}.${em}.persistence.model.jpa.defaultentity.${Entity}();\r\n        DynamicAccessUtil.setAttributes(${entity});\r\n        \n        //TODO set TO Attribute\r\n\n        ${Entity}TO ${entity}TO \u003d ${entity}To${Entity}TOConverter.convertDeep(${entity});\r\n\r\n        assertNotNull(${entity}TO);\r\n\r\n        Set\u003cString\u003e notEquals \u003d DynamicAccessUtil.isEquals(${entity}, ${entity}TO, Arrays.asList(${entity}.getAttributeNames()));\r\n\r\n        assertNotNull(notEquals);\r\n\n        //TODO add all attribute not converted using snippet \r\n\r\n        int notEqualsfields \u003d 0;//TODO set number of fields not converted\r\n        assertEquals(\"Ther\u0027are fields not converted from ${entity} to ${entity}TO\", notEqualsfields, notEquals.size());\r\n\r\n    }\r\n}\r\n",
+  "location": "FILE",
+  "filenameRestrictions": [],
+  "dependencies": [
+    {
+      "groupId": "jre",
+      "artifactId": "jre",
+      "version": "0.0.0"
+    },
+    {
+      "groupId": "com.ab.oneleo.commons.eas",
+      "artifactId": "commons-util",
+      "version": "0.0.0"
+    }
+  ]
+}
